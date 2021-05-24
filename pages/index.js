@@ -4,9 +4,9 @@ import styles from '../styles/Home.module.css'
 
 export default function Home() {
   const tracks = [
-    { title: 'Holding Pattern', audioSrc: 'https://soundcloud.com/chooptastic/how-time-flies' },
-    { title: 'Moon and I', audioSrc: 'test' },
-    { title: 'Wallflower', audioSrc: 'test' }
+    { title: 'Holding Pattern', audioSrc: './holding_pattern.wav' },
+    { title: 'Moon and I', audioSrc: './moon.wav' },
+    { title: 'Wallflower', audioSrc: './wallflower.wav' }
   ]
   return (
     <div className={styles.container}>

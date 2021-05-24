@@ -23,6 +23,42 @@ const AudioPlayer = ({ tracks }) => {
     setTrackIndex((trackIndex + 1) % tracks.length);
   };
 
+  const startTimer = () => {};
+
+  // Play/pause
+  useEffect(() => {
+    if (isPlaying) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
+  }, [isPlaying]);
+
+  // Change tracks
+  useEffect(() => {
+    audioRef.current.pause();
+
+    audioRef.current = new Audio(audioSrc);
+    setTrackProgress(audioRef.current.currentTime);
+
+    if (isReady.current) {
+      audioRef.current.play();
+      setIsPlaying(true);
+      startTimer();
+    } else {
+      // Set the isReady ref as true for the next pass
+      isReady.current = true;
+    }
+  }, [trackIndex]);
+
+  // Pause and clean up on unmount
+  useEffect(() => {
+    return () => {
+      audioRef.current.pause();
+      clearInterval(intervalRef.current);
+    };
+  }, []);
+
   return (
     <div className={styles.player}>
       <div className={styles.trackInfo}>
