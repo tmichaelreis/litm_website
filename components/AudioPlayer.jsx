@@ -23,7 +23,36 @@ const AudioPlayer = ({ tracks }) => {
     setTrackIndex((trackIndex + 1) % tracks.length);
   };
 
-  const startTimer = () => {};
+  const startTimer = () => {
+    // Clear running timer(s)
+    clearInterval(intervalRef.current);
+
+    intervalRef.current = setInterval(() => {
+      if (audioRef.current.ended) {
+        toNextTrack();
+      } else {
+        setTrackProgress(audioRef.current.currentTime);
+      }
+    }, [1000]);
+  };
+
+  const onScrub = (value) => {
+    // Stop playback
+    setIsPlaying(false);
+
+    // Clear running timer(s)
+    clearInterval(intervalRef.current);
+    audioRef.current.currentTime = value;
+    setTrackProgress(audioRef.current.currentTime);
+  };
+
+  const onScrubEnd = () => {
+    // Start if not playing
+    if (!isPlaying) {
+      setIsPlaying(true);
+    }
+    startTimer();
+  };
 
   // Play/pause
   useEffect(() => {
@@ -69,6 +98,17 @@ const AudioPlayer = ({ tracks }) => {
         onPrevClick={toPrevTrack}
         onNextClick={toNextTrack}
         onPlayPauseClick={setIsPlaying}
+      />
+      <input
+        type="range"
+        value={trackProgress}
+        step="1"
+        min="0"
+        max={duration ? duration : `${duration}`} // cast duration to string if NaN
+        className="progress"
+        onChange={(e) => onScrub(e.target.value)}
+        onMouseUp={onScrubEnd}
+        onKeyUp={onScrubEnd}
       />
     </div>
   );
