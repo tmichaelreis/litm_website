@@ -3,11 +3,13 @@ import AudioPlayer from '../components/AudioPlayer';
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  const cloudfrontUrl = "https://dacoj7br0jajz.cloudfront.net"
   const tracks = [
-    { title: 'Holding Pattern', audioSrc: './holding_pattern.wav' },
-    { title: 'Moon and I', audioSrc: './moon.wav' },
-    { title: 'Wallflower', audioSrc: './wallflower.wav' }
+    { title: 'Holding Pattern', audioSrc: `${cloudfrontUrl}/holding_pattern.wav` },
+    { title: 'Moon and I', audioSrc: `${cloudfrontUrl}/moon.wav` },
+    { title: 'Wallflower', audioSrc: `${cloudfrontUrl}/wallflower.wav` }
   ]
+
   return (
     <div className={styles.container}>
       <Head>
