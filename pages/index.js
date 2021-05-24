@@ -1,11 +1,10 @@
 import Head from 'next/head'
-//import Image from 'next/image'
 import AudioPlayer from '../components/AudioPlayer';
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
   const tracks = [
-    { title: 'Holding Pattern', audioSrc: 'test' },
+    { title: 'Holding Pattern', audioSrc: 'https://soundcloud.com/chooptastic/how-time-flies' },
     { title: 'Moon and I', audioSrc: 'test' },
     { title: 'Wallflower', audioSrc: 'test' }
   ]
@@ -23,6 +22,9 @@ export default function Home() {
         </h1>
 
         <section className={styles.playerContainer}>
+          {/* AudioPlayer uses the HTMLAudioElement interface,
+              which is only available in Browser
+              (https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement) */}
           { process.browser && <AudioPlayer tracks={tracks} /> }
         </section>
       </main>
