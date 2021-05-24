@@ -23,6 +23,13 @@
   height: 100vh;
 }
 
+.playerContainer {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .logo {
   height: 1em;
   margin-left: 0.5rem;

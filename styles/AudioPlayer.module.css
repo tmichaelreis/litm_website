@@ -1,0 +1,14 @@
+.player {
+  border: 1px solid gray;
+  width: 50vh;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.trackInfo {
+}
+
+.title {
+}
