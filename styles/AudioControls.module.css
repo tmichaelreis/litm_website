@@ -1,6 +1,11 @@
 .controls {
 }
 
+.controlIcon {
+  height: 20px;
+  width: 20px;
+}
+
 .previous {
 }
 

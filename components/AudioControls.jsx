@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import styles from "../styles/AudioControls.module.css";
 
 const AudioControls = ({
@@ -15,7 +13,7 @@ const AudioControls = ({
       aria-label="Previous"
       onClick={onPrevClick}
     >
-      <Image src="/previous.svg" alt="Previous" width={20} height={20} />
+      <img src="/previous.svg" alt="Previous" className={styles.controlIcon} />
     </button>
     {isPlaying ? (
       <button
@@ -24,7 +22,7 @@ const AudioControls = ({
         onClick={() => onPlayPauseClick(false)}
         aria-label="Pause"
       >
-        <Image src="/pause.svg" alt="Pause" width={20} height={20} />
+        <img src="/pause.svg" alt="Pause" className={styles.controlIcon} />
       </button>
     ) : (
       <button
@@ -33,7 +31,7 @@ const AudioControls = ({
         onClick={() => onPlayPauseClick(true)}
         aria-label="Play"
       >
-        <Image src="/play.svg" alt="Play" width={20} height={20} />
+        <img src="/play.svg" alt="Play" className={styles.controlIcon} />
       </button>
     )}
     <button
@@ -42,7 +40,7 @@ const AudioControls = ({
       aria-label="Next"
       onClick={onNextClick}
     >
-      <Image src="/next.svg" alt="Next" width={20} height={20} />
+      <img src="/next.svg" alt="Next" className={styles.controlIcon} />
     </button>
   </div>
 );
