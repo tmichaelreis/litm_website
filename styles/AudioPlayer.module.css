@@ -1,6 +1,6 @@
 .player {
   border: 1px solid gray;
-  width: 50vh;
+  width: 50vw;
   height: 20vh;
   display: flex;
   flex-direction: column;
