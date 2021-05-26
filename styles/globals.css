@@ -2,8 +2,11 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Courier Prime", monospace, sans-serif;
+  color: #940f06;
+  background-color: #ebdca9;
+  background-image: url("../public/paper_texture.jpeg");
+  background-size: cover;
 }
 
 a {

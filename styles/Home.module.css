@@ -3,6 +3,7 @@
   line-height: 1.15;
   font-size: 4rem;
   text-align: center;
+  z-index: 99;
 }
 
 .main {
@@ -24,11 +25,22 @@
   height: 100vh;
 }
 
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(242, 226, 174, 0.25);
+}
+
 .playerContainer {
   min-height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 99;
 }
 
 .logo {
