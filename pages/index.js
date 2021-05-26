@@ -27,9 +27,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          We are <br /> Lost in the Mail
-        </h1>
+        <h1 className={styles.title}>Lost in the Mail</h1>
 
         <section className={styles.playerContainer}>
           {/* AudioPlayer uses the HTMLAudioElement interface,

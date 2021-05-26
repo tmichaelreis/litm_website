@@ -1,19 +1,15 @@
 .controls {
+  display: flex;
+  justify-content: space-between;
 }
 
 .controlIcon {
-  height: 20px;
-  width: 20px;
+  margin: 1rem;
+  height: 2rem;
+  width: 2rem;
 }
 
-.previous {
-}
-
-.pause {
-}
-
-.play {
-}
-
-.next {
+.controlButton {
+  background: none;
+  border: none;
 }

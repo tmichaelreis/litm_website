@@ -54,6 +54,11 @@ const AudioPlayer = ({ tracks }) => {
     startTimer();
   };
 
+  const currentPercentage = duration
+    ? `${(trackProgress / duration) * 100}%`
+    : "0%";
+  const trackStyling = `-webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentPercentage}, #fff), color-stop(${currentPercentage}, #777))`;
+
   // Play/pause
   useEffect(() => {
     if (isPlaying) {
@@ -99,17 +104,20 @@ const AudioPlayer = ({ tracks }) => {
         onNextClick={toNextTrack}
         onPlayPauseClick={setIsPlaying}
       />
-      <input
-        type="range"
-        value={trackProgress}
-        step="1"
-        min="0"
-        max={duration ? duration : `${duration}`} // cast duration to string if NaN
-        className="progress"
-        onChange={(e) => onScrub(e.target.value)}
-        onMouseUp={onScrubEnd}
-        onKeyUp={onScrubEnd}
-      />
+      <div className={styles.progress}>
+        <input
+          type="range"
+          value={trackProgress}
+          step="1"
+          min="0"
+          max={duration ? duration : `${duration}`} // cast duration to string if NaN
+          className={styles.progressInput}
+          onChange={(e) => onScrub(e.target.value)}
+          onMouseUp={onScrubEnd}
+          onKeyUp={onScrubEnd}
+          style={{ background: trackStyling }}
+        />
+      </div>
     </div>
   );
 };

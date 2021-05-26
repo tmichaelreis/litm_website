@@ -1,4 +1,5 @@
 import styles from "../styles/AudioControls.module.css";
+import { FaFastBackward, FaPause, FaPlay, FaFastForward } from "react-icons/fa";
 
 const AudioControls = ({
   isPlaying,
@@ -9,38 +10,38 @@ const AudioControls = ({
   <div className={styles.controls}>
     <button
       type="button"
-      className={styles.previous}
+      className={styles.controlButton}
       aria-label="Previous"
       onClick={onPrevClick}
     >
-      <img src="/previous.svg" alt="Previous" className={styles.controlIcon} />
+      <FaFastBackward className={styles.controlIcon} />
     </button>
     {isPlaying ? (
       <button
         type="button"
-        className={styles.pause}
+        className={styles.controlButton}
         onClick={() => onPlayPauseClick(false)}
         aria-label="Pause"
       >
-        <img src="/pause.svg" alt="Pause" className={styles.controlIcon} />
+        <FaPause className={styles.controlIcon} />
       </button>
     ) : (
       <button
         type="button"
-        className={styles.play}
+        className={styles.controlButton}
         onClick={() => onPlayPauseClick(true)}
         aria-label="Play"
       >
-        <img src="/play.svg" alt="Play" className={styles.controlIcon} />
+        <FaPlay className={styles.controlIcon} />
       </button>
     )}
     <button
       type="button"
-      className={styles.next}
+      className={styles.controlButton}
       aria-label="Next"
       onClick={onNextClick}
     >
-      <img src="/next.svg" alt="Next" className={styles.controlIcon} />
+      <FaFastForward className={styles.controlIcon} />
     </button>
   </div>
 );
