@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import AudioControls from "../components/AudioControls";
+import TrackProgress from "../components/TrackProgress";
 import styles from "../styles/AudioPlayer.module.css";
 
 const AudioPlayer = ({ tracks }) => {
@@ -36,7 +37,7 @@ const AudioPlayer = ({ tracks }) => {
     }, [1000]);
   };
 
-  const onScrub = (value) => {
+  const handleScrub = (value) => {
     // Stop playback
     setIsPlaying(false);
 
@@ -46,18 +47,13 @@ const AudioPlayer = ({ tracks }) => {
     setTrackProgress(audioRef.current.currentTime);
   };
 
-  const onScrubEnd = () => {
+  const handleScrubEnd = () => {
     // Start if not playing
     if (!isPlaying) {
       setIsPlaying(true);
     }
     startTimer();
   };
-
-  const currentPercentage = duration
-    ? `${(trackProgress / duration) * 100}%`
-    : "0%";
-  const trackStyling = `-webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentPercentage}, #fff), color-stop(${currentPercentage}, #777))`;
 
   // Play/pause
   useEffect(() => {
@@ -104,21 +100,12 @@ const AudioPlayer = ({ tracks }) => {
         onNextClick={toNextTrack}
         onPlayPauseClick={setIsPlaying}
       />
-      <div className={styles.progress}>
-        <input
-          type="range"
-          value={trackProgress}
-          step="1"
-          min="0"
-          max={duration ? duration : `${duration}`} // cast duration to string if NaN
-          className={styles.progressInput}
-          onChange={(e) => onScrub(e.target.value)}
-          onMouseUp={onScrubEnd}
-          onKeyUp={onScrubEnd}
-          onTouchEnd={onScrubEnd}
-          style={{ background: trackStyling }}
-        />
-      </div>
+      <TrackProgress
+        onScrub={handleScrub}
+        onScrubEnd={handleScrubEnd}
+        progress={trackProgress}
+        duration={duration}
+      />
     </div>
   );
 };
