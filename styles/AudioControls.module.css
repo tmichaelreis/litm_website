@@ -4,7 +4,7 @@
 }
 
 .controlIcon {
-  margin: 1rem;
+  margin: 0.5rem;
   height: 2rem;
   width: 2rem;
 }
@@ -12,4 +12,6 @@
 .controlButton {
   background: none;
   border: none;
+  cursor: pointer;
+  margin: 1rem;
 }
