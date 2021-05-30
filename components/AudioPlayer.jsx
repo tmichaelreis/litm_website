@@ -7,6 +7,7 @@ const AudioPlayer = ({ tracks }) => {
   const [trackIndex, setTrackIndex] = useState(0);
   const [trackProgress, setTrackProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [playAfterScrub, setPlayAfterScrub] = useState(false);
 
   const { title, audioSrc } = tracks[trackIndex];
 
@@ -17,7 +18,12 @@ const AudioPlayer = ({ tracks }) => {
   const { duration } = audioRef.current;
 
   const toPrevTrack = () => {
-    setTrackIndex((tracks.length + trackIndex - 1) % tracks.length);
+    if (trackProgress < 2) {
+      setTrackIndex((tracks.length + trackIndex - 1) % tracks.length);
+    } else {
+      audioRef.current.currentTime = 0;
+      setTrackProgress(0);
+    }
   };
 
   const toNextTrack = () => {
@@ -38,6 +44,14 @@ const AudioPlayer = ({ tracks }) => {
   };
 
   const handleScrub = (value) => {
+    if (isPlaying) {
+      // Resume playing after scrubbing
+      setPlayAfterScrub(true);
+    } else {
+      // Remain paused after scrubbing
+      setPlayAfterScrub(false);
+    }
+
     // Stop playback
     setIsPlaying(false);
 
@@ -48,8 +62,8 @@ const AudioPlayer = ({ tracks }) => {
   };
 
   const handleScrubEnd = () => {
-    // Start if not playing
-    if (!isPlaying) {
+    // Start playback if desired
+    if (!isPlaying && playAfterScrub) {
       setIsPlaying(true);
     }
     startTimer();
@@ -83,6 +97,8 @@ const AudioPlayer = ({ tracks }) => {
 
   // Pause and clean up on unmount
   useEffect(() => {
+    startTimer();
+
     return () => {
       audioRef.current.pause();
       clearInterval(intervalRef.current);
