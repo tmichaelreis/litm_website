@@ -2,7 +2,7 @@ import styles from "../styles/TrackProgress.module.css";
 
 const TrackProgress = ({ onScrub, onScrubEnd, progress, duration }) => {
   const currentPercentage = duration ? `${(progress / duration) * 100}%` : "0%";
-  const trackStyling = `-webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentPercentage}, #fff), color-stop(${currentPercentage}, #777))`;
+  const trackStyling = `-webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentPercentage}, var(--transparent-red)), color-stop(${currentPercentage}, #777))`;
 
   return (
     <div className={styles.progress}>
