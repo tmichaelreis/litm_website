@@ -112,7 +112,7 @@ const AudioPlayer = ({ tracks }) => {
         <h2 className={styles.title}>{title}</h2>
       </div>
       <AudioControls
-        isPlaying={isPlaying}
+        isPlaying={isPlaying || playAfterScrub}
         onPrevClick={toPrevTrack}
         onNextClick={toNextTrack}
         onPlayPauseClick={setIsPlaying}
