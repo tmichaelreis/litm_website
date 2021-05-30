@@ -44,7 +44,7 @@ const AudioPlayer = ({ tracks }) => {
   };
 
   const handleScrub = (value) => {
-    if (isPlaying) {
+    if (isPlaying || playAfterScrub) {
       // Resume playing after scrubbing
       setPlayAfterScrub(true);
     } else {
@@ -66,6 +66,7 @@ const AudioPlayer = ({ tracks }) => {
     if (!isPlaying && playAfterScrub) {
       setIsPlaying(true);
     }
+    setPlayAfterScrub(false);
     startTimer();
   };
 
