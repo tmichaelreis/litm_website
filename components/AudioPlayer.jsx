@@ -8,14 +8,13 @@ const AudioPlayer = ({ tracks }) => {
   const [trackProgress, setTrackProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [playAfterScrub, setPlayAfterScrub] = useState(false);
+  const [duration, setDuration] = useState(NaN);
 
   const { title, audioSrc } = tracks[trackIndex];
 
   const audioRef = useRef(new Audio(audioSrc));
   const intervalRef = useRef();
   const isReady = useRef(false);
-
-  const { duration } = audioRef.current;
 
   const toPrevTrack = () => {
     if (trackProgress < 2) {
@@ -85,6 +84,14 @@ const AudioPlayer = ({ tracks }) => {
 
     audioRef.current = new Audio(audioSrc);
     setTrackProgress(audioRef.current.currentTime);
+
+    // Clear duration
+    setDuration(NaN);
+
+    // Set duration once track data is loaded
+    audioRef.current.onloadeddata = (e) => {
+      setDuration(audioRef.current.duration);
+    };
 
     if (isReady.current && isPlaying) {
       audioRef.current.play();

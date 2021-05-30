@@ -9,6 +9,7 @@ const TrackProgress = ({ onScrub, onScrubEnd, progress, duration }) => {
       <input
         type="range"
         value={progress}
+        disabled={!duration}
         step="1"
         min="0"
         max={duration ? duration : `${duration}`} // cast duration to string if NaN
