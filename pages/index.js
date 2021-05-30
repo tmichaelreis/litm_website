@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Lost in the Mail</title>
+        <title>Lost in the Male</title>
         <meta name="description" content="Website for Lost in the Mail band" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
