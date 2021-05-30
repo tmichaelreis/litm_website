@@ -1,0 +1,26 @@
+.footer {
+  z-index: 99;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+@media only screen and (max-width: 768px) {
+  .footer {
+    justify-content: center;
+  }
+}
+
+.contact {
+  font-size: 1.5rem;
+  padding: 1.25rem 1rem;
+  color: var(--transparent-black);
+}
+
+.wavies {
+  height: 3rem;
+  margin-right: -2.5rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.4;
+}

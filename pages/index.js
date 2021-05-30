@@ -1,5 +1,6 @@
 import Head from "next/head";
 import AudioPlayer from "../components/AudioPlayer";
+import Footer from "../components/Footer";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -36,6 +37,8 @@ export default function Home() {
           {process.browser && <AudioPlayer tracks={tracks} />}
         </section>
       </main>
+
+      <Footer />
     </div>
   );
 }

@@ -7,7 +7,6 @@
 }
 
 .main {
-  padding: 5rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -36,7 +35,6 @@
 }
 
 .playerContainer {
-  min-height: 50vh;
   width: 100%;
   text-align: center;
   display: flex;
