@@ -3,7 +3,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Courier Prime", monospace, sans-serif;
-  color: #940f06;
+  color: var(--transparent-red);
   background-color: #bdad93;
   background-image: url("../public/paper_texture.jpeg");
   background-size: cover;
@@ -19,6 +19,6 @@ a {
 }
 
 :root {
-  --transparent-red: rgba();
+  --transparent-red: rgba(148, 15, 6, 0.8);
   --transparent-black: rgba(0, 0, 0, 0.8);
 }
