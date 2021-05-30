@@ -21,10 +21,6 @@ const AudioControls = ({
         type="button"
         className={styles.controlButton}
         onClick={() => onPlayPauseClick(false)}
-        onTouchEnd={(e) => {
-          onPlayPauseClick(false);
-          e.preventDefault();
-        }}
         aria-label="Pause"
       >
         <FaPause className={styles.controlIcon} />
@@ -34,10 +30,6 @@ const AudioControls = ({
         type="button"
         className={styles.controlButton}
         onClick={() => onPlayPauseClick(true)}
-        onTouchEnd={(e) => {
-          onPlayPauseClick(true);
-          e.preventDefault();
-        }}
         aria-label="Play"
       >
         <FaPlay className={styles.controlIcon} />

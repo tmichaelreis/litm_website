@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import AudioControls from "../components/AudioControls";
 import TrackProgress from "../components/TrackProgress";
 import styles from "../styles/AudioPlayer.module.css";
@@ -56,7 +56,7 @@ const AudioPlayer = ({ tracks }) => {
   };
 
   // Play/pause
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isPlaying) {
       audioRef.current.play();
     } else {
@@ -65,7 +65,7 @@ const AudioPlayer = ({ tracks }) => {
   }, [isPlaying]);
 
   // Change tracks
-  useEffect(() => {
+  useLayoutEffect(() => {
     audioRef.current.pause();
 
     audioRef.current = new Audio(audioSrc);
