@@ -85,7 +85,7 @@ const AudioPlayer = ({ tracks }) => {
     audioRef.current = new Audio(audioSrc);
     setTrackProgress(audioRef.current.currentTime);
 
-    if (isReady.current) {
+    if (isReady.current && isPlaying) {
       audioRef.current.play();
       setIsPlaying(true);
       startTimer();
