@@ -10,7 +10,7 @@ export default function Home() {
       title: "Holding Pattern",
       audioSrc: `${cloudfrontUrl}/holding_pattern.wav`,
     },
-    { title: "Moon and I", audioSrc: `${cloudfrontUrl}/moon.wav` },
+    { title: "The Moon & I", audioSrc: `${cloudfrontUrl}/moon.wav` },
     { title: "Wallflower", audioSrc: `${cloudfrontUrl}/wallflower.wav` },
   ];
 
