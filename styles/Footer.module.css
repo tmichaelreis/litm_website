@@ -1,4 +1,5 @@
 .footer {
+  align-self: flex-end;
   width: 100%;
   padding: 1rem;
   display: flex;

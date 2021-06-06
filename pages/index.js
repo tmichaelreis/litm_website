@@ -28,7 +28,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Lost in the Mail</h1>
+        <img className={styles.logo} src="/logo.svg" />
 
         <section className={styles.playerContainer}>
           {/* AudioPlayer uses the HTMLAudioElement interface,
