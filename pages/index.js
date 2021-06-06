@@ -20,11 +20,6 @@ export default function Home() {
         <title>Lost in the Mail</title>
         <meta name="description" content="Website for Lost in the Mail band" />
         <link rel="icon" href="/mail_lines.svg" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Calistoga&display=swap"
-          rel="stylesheet"
-        />
       </Head>
 
       <main className={styles.main}>
