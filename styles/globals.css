@@ -25,8 +25,7 @@ a {
 :root {
   --white: #ffffff;
   --semitransparent-background: rgba(31, 34, 86, 0.8);
-  --transparent-red: rgba(148, 15, 6, 0.8);
-  --transparent-black: rgba(0, 0, 0, 0.8);
+  --teal-blue: #00b6c0;
 }
 
 button {

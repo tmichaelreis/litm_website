@@ -8,7 +8,7 @@ const AudioControls = ({
   onPrevClick,
   onNextClick,
 }) => (
-  <IconContext.Provider value={{ color: "var(--transparent-black)" }}>
+  <IconContext.Provider value={{ color: "var(--white)" }}>
     <div className={styles.controls}>
       <button
         type="button"

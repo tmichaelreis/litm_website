@@ -13,7 +13,7 @@
   -webkit-appearance: none;
   height: 1rem;
   width: 1rem;
-  background-color: #940f06;
+  background-color: var(--teal-blue);
   cursor: pointer;
   border-radius: 100%;
 }
