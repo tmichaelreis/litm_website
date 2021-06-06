@@ -1,11 +1,11 @@
 .progress {
-  padding: 0.5rem;
 }
 
 .progressInput {
   width: 20vw;
   min-width: 15rem;
   height: 5px;
+  border-radius: 999px;
   -webkit-appearance: none;
 }
 
