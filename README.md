@@ -1,3 +1,5 @@
+Website and media player for the band "Lost in the Mail" (lostinthemail.co).
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Development
@@ -10,7 +12,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+The app will auto-update as you edit files.
 
 ## Deployment
 
