@@ -10,13 +10,13 @@
 .contact {
   font-size: 1.5rem;
   padding: 0.5rem 0.5rem 0.5rem 2rem;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   background-color: var(--semitransparent-background);
   color: var(--white);
 }
 
 .lines {
-  height: 1.5rem;
+  height: 1rem;
   margin-right: -1.5rem;
   z-index: 99;
 }
@@ -28,9 +28,5 @@
 
   .contact {
     font-size: 1rem;
-  }
-
-  .lines {
-    height: 1rem;
   }
 }
