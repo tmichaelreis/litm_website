@@ -16,9 +16,17 @@ html {
 }
 
 body {
-  min-height: 100vh;
   margin: 0;
   font-family: "calistogaregular", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#__next {
+  height: 100%;
 }
 
 a {
