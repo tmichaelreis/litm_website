@@ -16,4 +16,4 @@ The app will auto-update as you edit files.
 
 ## Deployment
 
-The site is managed by [AWS Amplify](https://aws.amazon.com/amplify/). Any changes to the `main` branch are immediately deployed.
+The site is managed by [AWS Amplify](https://aws.amazon.com/amplify/). Any changes pushed to or merged into the `main` branch are immediately deployed.
