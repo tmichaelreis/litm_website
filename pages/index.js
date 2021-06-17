@@ -1,7 +1,15 @@
 import Head from "next/head";
-import AudioPlayer from "../components/AudioPlayer";
+import dynamic from "next/dynamic";
 import Footer from "../components/Footer";
 import styles from "../styles/Home.module.css";
+
+// Import AudioPlayer dynamically to avoid server-side rendering.
+// The AudioPlayer uses the HTMLAudioElement interface,
+// which is only available in Browser:
+// (https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement)
+const AudioPlayer = dynamic(() => import("../components/AudioPlayer"), {
+  ssr: false,
+});
 
 export default function Home() {
   const cloudfrontUrl = "https://dacoj7br0jajz.cloudfront.net";
@@ -26,10 +34,7 @@ export default function Home() {
         <img className={styles.logo} src="/logo.svg" />
 
         <section className={styles.playerContainer}>
-          {/* AudioPlayer uses the HTMLAudioElement interface,
-              which is only available in Browser
-              (https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement) */}
-          {process.browser && <AudioPlayer tracks={tracks} />}
+          <AudioPlayer tracks={tracks} />
         </section>
       </main>
 
