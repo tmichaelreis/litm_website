@@ -3,6 +3,8 @@ import AudioControls from "../components/AudioControls";
 import TrackProgress from "../components/TrackProgress";
 import styles from "../styles/AudioPlayer.module.css";
 
+import * as ga from "../lib/ga";
+
 const AudioPlayer = ({ tracks }) => {
   const [trackIndex, setTrackIndex] = useState(0);
   const [trackProgress, setTrackProgress] = useState(0);
@@ -17,6 +19,13 @@ const AudioPlayer = ({ tracks }) => {
   const isReady = useRef(false);
 
   const toPrevTrack = () => {
+    // Log GA Event
+    ga.event({
+      action: "beginning_or_previous_button_pressed",
+      params: { song: title, timestamp: audioRef.current.currentTime },
+    });
+
+    // Go to beginning of track or previous
     if (trackProgress < 2) {
       setTrackIndex((tracks.length + trackIndex - 1) % tracks.length);
     } else {
@@ -25,17 +34,44 @@ const AudioPlayer = ({ tracks }) => {
     }
   };
 
-  const toNextTrack = () => {
+  const toNextTrack = ({ autoplay = false }) => {
+    if (!autoplay) {
+      // Log GA Event
+      ga.event({
+        action: "next_track_clicked",
+        params: { song: title, timestamp: audioRef.current.currentTime },
+      });
+    }
     setTrackIndex((trackIndex + 1) % tracks.length);
+  };
+
+  const handlePlayPause = (play) => {
+    // Log GA event
+    if (play) {
+      ga.event({ action: "play_song", params: { song: title } });
+    } else {
+      ga.event({
+        action: "pause_song",
+        params: { song: title, timestamp: audioRef.current.currentTime },
+      });
+    }
+
+    // Update play/pause state
+    setIsPlaying(play);
   };
 
   const startTimer = () => {
     // Clear running timer(s)
     clearInterval(intervalRef.current);
 
+    // Start new timer to regularly update track progess
     intervalRef.current = setInterval(() => {
       if (audioRef.current.ended) {
-        toNextTrack();
+        ga.event({
+          action: "next_track_autoplay",
+          params: { song: title },
+        });
+        toNextTrack({ autoplay: true });
       } else {
         setTrackProgress(audioRef.current.currentTime);
       }
@@ -53,6 +89,16 @@ const AudioPlayer = ({ tracks }) => {
 
     // Stop playback
     setIsPlaying(false);
+
+    // Log scrub event in GA
+    ga.event({
+      action: "scrub_used",
+      params: {
+        song: title,
+        scrubbed_from: audioRef.current.currentTime,
+        scrubbed_to: value,
+      },
+    });
 
     // Clear running timer(s)
     clearInterval(intervalRef.current);
@@ -122,7 +168,7 @@ const AudioPlayer = ({ tracks }) => {
         isPlaying={isPlaying || playAfterScrub}
         onPrevClick={toPrevTrack}
         onNextClick={toNextTrack}
-        onPlayPauseClick={setIsPlaying}
+        onPlayPauseClick={handlePlayPause}
       />
       <TrackProgress
         onScrub={handleScrub}
